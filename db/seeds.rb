@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 User.create(
   email:"polo@hello.com" ,
   password:"password" ,
@@ -30,7 +31,7 @@ descriptions = [
 " is a top notch, bona fide luxurious apartment with a hydro-massaging jetted tub. Nestled in a lovely spot in Vračar, in a brand new building, with mirrored ceiling, bathrobes and slippers and an infinite number of decorative luminaries, are just some of the details of this perfect oasis for two"
 ]
 
-10.times do |i|
+2.times do |i|
 
   new_user = User.create(
   name:Faker::Name.name ,
@@ -59,4 +60,35 @@ descriptions = [
     photo_3: Faker::LoremPixel.image,
     user_id: new_user.id
   )
+
+  reserved_flat = Flat.create(
+    name: flat_title,
+    address: Faker::Address.street_name,
+    description: "#{flat_title} #{descriptions.sample}",
+    price_day: price_day,
+    price_night: price_day * 0.11,
+    petals: [true, false].sample,
+    massage_kit: [true, false].sample,
+    champagne: [true, false].sample,
+    instructions: "#{Faker::Address.secondary_address}, #{Faker::Address.street_address } | code #{Faker::Address.building_number}",
+    photo_1: Faker::LoremPixel.image,
+    photo_2: Faker::LoremPixel.image,
+    photo_3: Faker::LoremPixel.image,
+    user_id: new_user.id
+  )
+
 end
+
+
+Booking.create(
+  amount: 30,
+  started_at: "2017-02-14 [12:00:00]",
+  endet_at: "2017-02-14 [18:00:00]",
+  petals: false,
+  massage_kit: false,
+  champagne: false,
+  created_at: "2017-02-10 [14:00:00]",
+  updated_at: "",
+  flat_id: Flat.last.id,
+  user_id: User.last.id,
+)
