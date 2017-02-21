@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  ressources :users do
+    ressources :flats, only: [:new, :create, :edit, :update, :delete]
+    ressources :bookings, only: [:new, :show, :create]
+  end
+  ressources :flats, only: [:index, :show]
+
+
 end
