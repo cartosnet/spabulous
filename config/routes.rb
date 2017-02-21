@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   end
   resources :flats, only: [:index, :show]
 
+  root to: "flats#index"
 
 end
