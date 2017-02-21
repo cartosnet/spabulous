@@ -1,12 +1,12 @@
 class FlatsController < ApplicationController
  skip_before_action :authenticate_user!, only: [:index, :show]
 
-     def index
+    def index
       @flats = Flat.all
     end
 
     def show
-      @flat = flat.find(params[:id])
+      @flat = Flat.find(params[:id])
     end
 
     def new
@@ -14,11 +14,12 @@ class FlatsController < ApplicationController
     end
 
     def create
-      @flat = flat.new(flat_params)
+      @flat = Flat.new(flat_params)
       if @flat.save
-      redirect_to flat_path(@flat)
-    else
-      render :new
+        redirect_to flat_path(@flat)
+      else
+        render :new
+      end
     end
 
     def edit
@@ -29,15 +30,17 @@ class FlatsController < ApplicationController
     def update
       @flat = Flat.find(params[:id])
       if @flat.update(flat_params)
-      redirect_to flat_path(@flat)
-    else
-      render :edit
+        redirect_to flat_path(@flat)
+      else
+       render :edit
+      end
     end
 
     def delete
       @flat = Flat.find(params[:id])
       @flat.destroy
       redirect_to flats_path
+    end
 
     private
 
