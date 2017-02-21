@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 2.5'
 # security
 gem 'figaro'
 
+# facebook connect
+gem 'omniauth-facebook'
+
 gem 'devise'
 
 group :development, :test do
