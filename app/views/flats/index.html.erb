@@ -1,0 +1,16 @@
+<h1 class="text-center">List of flats</h1>
+<div class="container text-center">
+  <div class="row">
+    <% @flats.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to flat_path(flat) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>');">
+            <div class="title">
+              <h3> <%= flat.name %></h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
