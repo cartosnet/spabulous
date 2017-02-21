@@ -1,18 +1,51 @@
 class FlatsController < ApplicationController
-  before_action :find_flat, only: [:show]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+ skip_before_action :authenticate_user!, only: [:index, :show]
 
+     def index
+      @flats = Flat.all
+    end
 
-  def index
-    @flats = Flat.all
+    def show
+      @flat = flat.find(params[:id])
+    end
+
+    def new
+      @flat = Flat.new
+    end
+
+    def create
+      @flat = flat.new(flat_params)
+      if @flat.save
+      redirect_to flat_path(@flat)
+    else
+      render :new
+    end
+
+    def edit
+      @flat = Flat.create(params_params)
+      redirect_to flat_path(@flat)
+    end
+
+    def update
+      @flat = Flat.find(params[:id])
+      if @flat.update(flat_params)
+      redirect_to flat_path(@flat)
+    else
+      render :edit
+    end
+
+    def delete
+      @flat = Flat.find(params[:id])
+      @flat.destroy
+      redirect_to flats_path
+
+    private
+
+    def flat_params
+
+      params
+      .require(:flats)
+      .permit(:name, :description, :price_day, :price_night, :petals, :massage_kit, :champagne, :instructions, :photo_1, :photo_2, :photo_3)
+    end
+
   end
-
-  def show
-  end
-
-  private
-
-  def find_flat
-    @flat = Flat.find(params[:cocktail_id])
-  end
-end
