@@ -1,5 +1,73 @@
-<h1 class="text-center">Your selected flat</h1>
 <div class="container text-center">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+        <% @flat.photos.each do |photo| %>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active text-center">
+          <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fit %>
+          <div class="container">
+            <div class="carousel-caption">
+              <p><%= link_to 'Book', new_flat_booking_path , class: "btn btn-lg btn-primary" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fit %>
+          <div class="container">
+            <div class="carousel-caption">
+              <p><%= link_to 'book', new_flat_booking_path , class: "btn btn-lg btn-primary" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fit %>
+          <div class="container">
+            <div class="carousel-caption">
+              <p><%= link_to 'book', new_flat_booking_path , class: "btn btn-lg btn-primary" %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+  <h1 class="text-center">Your selected flat</h1>
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="tabs">
+          <a class="tab active" href="#">
+            <h3>350</h3>
+            <p>Followers</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>456</h3>
+            <p>Following</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>189</h3>
+            <p>Upvoted</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>13</h3>
+            <p>Submitted</p>
+          </a>
+        </div>
+        <div class="col-xs-offset-4">
+        </div>
+      </div>
+    </div>
+
   <div class="row">
     <ul>
       <li><%= @flat.name %></li>
@@ -8,9 +76,16 @@
       <li><%= @flat.price_day %></li>
       <li><%= @flat.petals %></li>
       <li><%= @flat.massage_kit %></li>
-      <li><%= @flat.champagne %></li>
+
+
+      <% if @flat.champagne == true %>
+
+        <li>Possibilty to add a champage</li>
+      <% end %>
+
     </ul>
   </div>
+
   <div class="row">
     <div class="col-xs-4 ">
       <% @flat.photos.each do |photo| %>
@@ -26,6 +101,4 @@
     <%= link_to 'Book this Flat', new_flat_booking_path(@flat) %>
   </div>
 </div>
-
-
 
