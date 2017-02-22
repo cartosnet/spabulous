@@ -4,7 +4,9 @@
     <%= simple_form_for([@user, @flat]) do |f| %>
       <%= f.input :name, label: "cosy name for your flat"  %>
       <%= f.input :description, label: "flat description" %>
-      <%= f.input :photo, as: :attachinary %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.input :photos, as: :attachinary %>
       <%= f.input :price_day, label: "your price by day (in €)" %>
       <%= f.input :price_night, label: "your price by night (in €)" %>
       <%= f.input :petals, as: :boolean, label: "petals" do  %>

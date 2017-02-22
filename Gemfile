@@ -43,6 +43,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faker'
 
+gem 'jquery-ui-rails'
+
 # security
 gem 'figaro'
 
