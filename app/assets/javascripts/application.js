@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+
+
+
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 //= require_tree .

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :user, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :flats, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
@@ -8,4 +9,5 @@ Rails.application.routes.draw do
   end
 
   root to: "flats#index"
+  mount Attachinary::Engine => "/attachinary"
 end

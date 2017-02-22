@@ -23,8 +23,7 @@ class FlatsController < ApplicationController
     end
 
     def edit
-      @flat = Flat.create(params_params)
-      redirect_to flat_path(@flat)
+      @flat = Flat.find(params[:id])
     end
 
     def update
@@ -47,8 +46,8 @@ class FlatsController < ApplicationController
     def flat_params
 
       params
-      .require(:flats)
-      .permit(:name, :description, :price_day, :price_night, :petals, :massage_kit, :champagne, :instructions, :photo_1, :photo_2, :photo_3)
+      .require(:flat)
+      .permit(:name, :description, :price_day, :price_night, :petals, :massage_kit, :champagne, :instructions, photos: [])
     end
 
   end

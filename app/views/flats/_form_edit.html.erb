@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Add a flat</h3>
+    <%= simple_form_for([@user, @flat]) do |f| %>
+      <%= f.input :name, label: "You found another name ?"  %>
+      <%= f.input :description, label: "flat description" %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.input :price_day, label: "your price by day (in €)" %>
+      <%= f.input :price_night, label: "your price by night (in €)" %>
+      <%= f.input :petals, as: :boolean, label: "petals" do  %>
+        <%= f.check_box :petals, {}, "yes", "no"  %>
+      <% end %>
+      <%= f.input :champagne, as: :boolean, label: "champagne" do  %>
+        <%= f.check_box :champagne, {}, "yes", "no"  %>
+      <% end %>
+      <%= f.input :massage_kit, as: :boolean, label: "massage kit" do  %>
+        <%= f.check_box :massage_kit, {}, "yes", "no"  %>
+      <% end %>
+
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
