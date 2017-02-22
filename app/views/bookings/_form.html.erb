@@ -3,7 +3,8 @@
 
   <div class="form-inputs">
     <h3>Date de réservation (jj-mm-aaaa) :</h3>
-    <%= f.input :reservation_date %>
+    <%= f.input :reservation_date, input_html: {class: 'datepicker'} %>
+
     <h1>
       <%= f.label(:time_slot, "Jour") %>
       <%= f.radio_button(:time_slot, "Jour") %>
