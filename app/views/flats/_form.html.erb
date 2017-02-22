@@ -1,25 +1,37 @@
-<div class="row">
-  <div class="col-xs-12 col-md-6">
-    <h3>Add a flat</h3>
-    <%= simple_form_for([@user, @flat]) do |f| %>
-      <%= f.input :name, label: "cosy name for your flat"  %>
-      <%= f.input :description, label: "flat description" %>
-      <%= f.input :photos, as: :attachinary %>
-      <%= f.input :photos, as: :attachinary %>
-      <%= f.input :photos, as: :attachinary %>
-      <%= f.input :price_day, label: "your price by day (in €)" %>
-      <%= f.input :price_night, label: "your price by night (in €)" %>
-      <%= f.input :petals, as: :boolean, label: "petals" do  %>
-        <%= f.check_box :petals, {}, "yes", "no"  %>
-      <% end %>
-      <%= f.input :champagne, as: :boolean, label: "champagne" do  %>
-        <%= f.check_box :champagne, {}, "yes", "no"  %>
-      <% end %>
-      <%= f.input :massage_kit, as: :boolean, label: "massage kit" do  %>
-        <%= f.check_box :massage_kit, {}, "yes", "no"  %>
-      <% end %>
-
-      <%= f.button :submit %>
-    <% end %>
+<%= simple_form_for([@user, @flat]) do |f| %>
+  <%= f.input :name, label: "Choisissez un titre"  %>
+  <%= f.input :description, label: "Décrivez votre appartement" %>
+  <%= f.input :photos, as: :attachinary %>
+  <%= f.input :photos, as: :attachinary %>
+  <%= f.input :photos, as: :attachinary %>
+  <div class="col-xs-6">
+    <%= f.input :price_day, label: "Votre prix pour la location en journée (€)" %>
   </div>
-</div>
+  <div class="col-xs-6">
+    <%= f.input :price_night, label: "Votre prix pour la location à la nuitée (€)" %>
+  </div>
+  <hr/>
+  <h1>Proposez des options à votre locataire </h1>
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11">
+    <h2>
+    <%= f.input :petals, as: :boolean, label: "Pétales de rose......................." do  %>
+      <%= f.check_box :petals, {}, "yes", "no"  %>
+    <% end %>
+    </h2>
+    <h2>
+    <%= f.input :champagne, as: :boolean, label: "Champagne............................" do  %>
+      <%= f.check_box :champagne, {}, "yes", "no"  %>
+    <% end %>
+    </h2>
+    <h2>
+    <%= f.input :massage_kit, as: :boolean, label: "Kit de Massage......................." do  %>
+      <%= f.check_box :massage_kit, {}, "yes", "no"  %>
+    <% end %>
+    </h2>
+  </div>
+  <h1>
+    <%= f.button :submit, "Mettre mon appartement en ligne", class: 'btn btn-primary' %>
+  </h1>
+<% end %>
+

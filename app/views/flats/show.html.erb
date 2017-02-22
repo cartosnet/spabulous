@@ -1,53 +1,39 @@
- <div class="container">
+<div class="col-xs-2"></div>
+<div class="col-xs-8">
+  <h1><%= @flat.name.upcase %></h1>
+  <hr/>
+
+  <h4><%= @flat.description.capitalize %></h4>
+
   <div class="row">
-    <% @flat.photos.each do |photo| %>
-      <div class="col-xs-4 ">
-        <div class="photo-appartement" >
-         <%= cl_image_tag photo.path, width: 300, height: 300, size: '300x300', crop: :fit %>
-        </div>
-      </div>
+    <div class="col-xs-9">
+      <% @flat.photos.each do |photo| %>
+
+        <%= cl_image_tag photo.path, width: 900, height: 900, crop: :fit %>
+
       <% end %>
-  </div>
-  <div class="text-center">
-    <div class="row">
-      <div class="col-xs-8">
-        <div class="tabs">
-          <a class="tab active" href="#">
-            <h3>Presentation</h3>
-          </a>
-          <a class="tab" href="#">
-            <h3>Commentaires</h3>
-          </a>
-          <a class="tab" href="#">
-            <h3>L'hotes</h3>
-          </a>
-          <a class="tab" href="#">
-            <h3>Emplacement</h3>
-          </a>
-        </div>
-        <ul class="list">
-        <h2><%= @flat.name %></h2>
-        <li><%= @flat.address %></li>
-        <li><%= @flat.description %></li>
-        <li><%= @flat.price_day %></li>
-        <li><%= @flat.petals %></li>
-        <li><%= @flat.massage_kit %></li>
 
+    </div>
+    <div class="col-xs-3">
+      <h1>Prix Journée <%= @flat.price_day %> €</h1>
+      <h1>Prix Nuitée <%= @flat.price_night %> €</h1>
+      <hr/>
+      <h3>Options Proposées :</h3>
+      <ul>
         <% if @flat.champagne == true %>
-
-          <li>Possibilty to add a champage</li>
+          <li>Champage</li>
         <% end %>
-        </ul>
+        <% if @flat.petals == true %>
+          <li>Pétales de rose</li>
+        <% end %>
+        <% if @flat.massage_kit == true %>
+          <li>Kit de massage</li>
+        <% end %>
+      </ul>
     </div>
   </div>
-  <div class="col-xs-offset-4">
-</div>
-    </div>
+    <hr/>
+   <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
+   </div>
 
-      <
-    <div class="row">
-        <%= link_to 'Book this Flat', new_flat_booking_path(@flat) %>
-      </div>
-    </div>
-  </div>
 </div>
