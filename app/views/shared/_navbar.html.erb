@@ -19,26 +19,19 @@
     <% if user_signed_in? %>
 
       <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o fa-2x"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
       <%= link_to new_flat_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-plus-circle fa-2x"></i>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
 
       <!-- TODO : display this link in the dropdown menu -->
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-      <% end %>
+
+      <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-button btn" %>
 
       <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
+      <!-- <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -56,9 +49,7 @@
           </ul>
         </div>
       </div>
-
-      <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, method: :delete class: "navbar-wagon-item navbar-wagon-button btn"  %>
-
+ -->
     <% else %>
 
       <!-- Login text link -->
@@ -69,7 +60,6 @@
 
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
