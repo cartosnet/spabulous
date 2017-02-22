@@ -11,18 +11,26 @@ class BookingsController < ApplicationController
     def create
       @booking= Booking.new(booking_params)
 
-      # TODO :
       # get the reservation_date
-      puts "---------- RESERVATION DATE -------------"
-      puts @booking.reservation_date
-      puts "-----------------------------------------"
+
+      date = Date.parse(@booking.reservation_date)
 
       # get the time_slot
-      puts "-------------- TIME SLOT ----------------"
-      puts @booking.time_slot
-      puts "-----------------------------------------"
 
-      # use it to generate a date_time started_at and ended_at
+      if @booking.time_slot == "Jour"
+        time = "T12:00:00+00:00"
+        fulldate = DateTime.parse(date.to_s+time.to_s)
+      elsif @booking.time_slot == "Nuit"
+        time = "T19:00:00+00:00"
+        fulldate = DateTime.parse(date.to_s+time.to_s)
+      else
+        #TODO : Show error message "vous devez choisir entre reserver pour la journée ou la nuit"
+      end
+
+      # generate a date_time started_at and ended_at
+      @booking.started_at = fulldate
+      @booking.save
+      redirect_to root
     end
 
     private
