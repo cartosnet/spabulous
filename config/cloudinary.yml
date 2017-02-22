@@ -5,6 +5,7 @@ development:
   api_secret: M9nH5zMw_k4iyrhGTugh1Kn5zPQ
   enhance_image_tag: true
   static_image_support: false
+
 production:
   cloud_name: dlxd7we3g
   api_key: '948768664237862'
