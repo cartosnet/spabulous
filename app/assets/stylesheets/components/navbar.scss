@@ -36,6 +36,11 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  margin-right: 12px;
+}
+.navbar-wagon-item:hover {
+  color: #da552f;
+  text-decoration: none;
 }
 
 /* Navbar standard link */
