@@ -42,7 +42,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'faker'
+
+#formulaire
 gem 'simple_form'
+gem 'bootstrap-datepicker-rails'
 
 gem 'jquery-ui-rails'
 
