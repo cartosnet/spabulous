@@ -42,6 +42,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'faker'
+gem 'simple_form'
 
 gem 'jquery-ui-rails'
 

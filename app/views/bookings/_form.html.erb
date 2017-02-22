@@ -1,0 +1,26 @@
+<%= simple_form_for([@current_flat, @booking]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <h3>Date de réservation (jj-mm-aaaa) :</h3>
+    <%= f.input :reservation_date %>
+    <h1>
+      <%= f.label(:time_slot, "Jour") %>
+      <%= f.radio_button(:time_slot, "Jour") %>
+      <%= f.label(:time_slot, "Nuit") %>
+      <%= f.radio_button(:time_slot, "Nuit")%>
+    </h1>
+  </div>
+
+
+  <h3>Le propriétaire vous propose :</h3>
+  <div class="form-inputs">
+    <%= f.input :massage_kit, as: :boolean %>
+    <%= f.input :champagne, as: :boolean %>
+    <%= f.input :petals, as: :boolean %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Réserver' %>
+  </div>
+<% end %>

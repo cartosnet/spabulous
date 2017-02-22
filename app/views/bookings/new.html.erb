@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <h1>Reservation de l'appartement <%= @current_flat.name %></h1>
+
+    <%= render 'form', current_flat: @current_flat %>
+
+
+    <hr/>
+
+    <%= link_to "Retour à la liste d'appartements", flats_path %>
+  </div>
+</div>
+
