@@ -49,6 +49,8 @@ gem 'jquery-ui-rails'
 # security
 gem 'figaro'
 
+gem 'font-awesome-sass'
+
 # Pictures
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
