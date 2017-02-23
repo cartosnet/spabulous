@@ -2,7 +2,7 @@ class FlatsController < ApplicationController
  skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      @flats = Flat.near(params[:address], 50)
+      @flats = Flat.near(params[:address], 50)git
 
       # @flats = @flats.where(number)
 
