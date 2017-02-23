@@ -1,15 +1,13 @@
+<br>
+<br>
+<br>
 <h3> All your bookings</h3>
 
 <% @bookings.each do |booking| %>
   <p> You have a booking for the: <%= booking.started_at %></p>
   <p> <%= link_to "Details of the booking", flat_booking_path(booking.flat, booking) %></p>
-  <p> New Row</p>
   <p> -------- </p>
 <% end %>
 <h3>your flats</h3>
-<% @flats.each do |flat| %>
-  <% flat.photos.each do |photo|%>
-    <%= cl_image_tag photo.path, width: 900, height: 900, crop: :fit %>
-  <% end %>
-<% end %>
+<%= render 'flats/all' %>
 

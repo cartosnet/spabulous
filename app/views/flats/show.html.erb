@@ -36,6 +36,9 @@
 
       <!-- Call To Action -->
       <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
+      <% if @flat.user_id = current_user %>
+        <%= link_to 'Edit', edit_flat_path(@flat) %>
+      <% end %>
 
 
 

@@ -1,4 +1,8 @@
-<h2> Here's your booking</h2>
+<br>
+<br>
+<br>
+<br>
+<h2> Here's all your booking</h2>
 
 <p> You have ordered it at the: <%= @booking.created_at %></p>
 <p>It it is booked for the: <%= @booking.started_at %></p>
@@ -6,4 +10,4 @@
 <p> <%= @booking.flat.address %></p>
 
 
-<%= link_to "See the flat", flat_path(@flat), class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to "See the flat you booked", flat_path(@flat), class: "navbar-wagon-item navbar-wagon-link" %>
