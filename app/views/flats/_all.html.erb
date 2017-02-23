@@ -1,0 +1,16 @@
+<% @flats.each do |flat| %>
+  <%= link_to flat_path(flat) do %>
+
+      <div class="card-details">
+        <div class="title">
+          <h3> <%= flat.name %></h3>
+        </div>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= flat.photo_1 %>');">
+        </div>
+        <div class="flat-description">
+          <p> text</p>
+        </div>
+      </div>
+
+    <% end %>
+<% end %>

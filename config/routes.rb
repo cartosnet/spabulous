@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   devise_for :user, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   resources :flats, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   resources :flats do
