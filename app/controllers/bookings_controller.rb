@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
 
     def index
-      @bookings = Booking.all
+      @bookings = current_user.bookings
+      @flats = current_user.flats
     end
 
     def new
@@ -38,7 +39,7 @@ class BookingsController < ApplicationController
       # generate a date_time started_at and ended_at
       @booking.started_at = fulldate
       @booking.save
-      redirect_to flat_booking_path(@booking.flat, @booking)
+      redirect_to flat_booking_path(flat, @booking)
     end
 
     private
