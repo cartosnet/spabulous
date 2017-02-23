@@ -1,23 +1,26 @@
-<div class="col-xs-2"></div>
-<div class="col-xs-8">
-  <h1><%= @flat.name.upcase %></h1>
-  <hr/>
-
-  <h4><%= @flat.description.capitalize %></h4>
-
+<div class="container">
   <div class="row">
-    <div class="col-xs-9">
+
+    <div class="col-xs-2"><!--Offset-->  </div>
+    <div class="col-xs-8" style="background-color:black;">
+
+
+
+
+      <h1><%= @flat.name.upcase %></h1>
+
+      <h4><%= @flat.description.capitalize %></h4>
+
+      <!-- Photos -->
       <% @flat.photos.each do |photo| %>
-
-        <%= cl_image_tag photo.path, width: 900, height: 900, crop: :fit %>
-
+        <%= cl_image_tag photo.path, width: 500, height: 500, crop: :fit %>
       <% end %>
 
-    </div>
-    <div class="col-xs-3">
+      <!-- Prices-->
       <h1>Prix Journée <%= @flat.price_day %> €</h1>
       <h1>Prix Nuitée <%= @flat.price_night %> €</h1>
-      <hr/>
+
+      <!-- Options-->
       <h3>Options Proposées :</h3>
       <ul>
         <% if @flat.champagne == true %>
@@ -30,11 +33,15 @@
           <li>Kit de massage</li>
         <% end %>
       </ul>
+
+      <!-- Call To Action -->
+      <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
+
+
+
     </div>
+
   </div>
-    <hr/>
-   <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
-   </div>
 </div>
 
 <% content_for(:after_js) do %>
