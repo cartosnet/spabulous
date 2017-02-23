@@ -38,8 +38,12 @@ class BookingsController < ApplicationController
 
       # generate a date_time started_at and ended_at
       @booking.started_at = fulldate
-      @booking.save
-      redirect_to flat_booking_path(@booking.flat_id, @booking)
+      if @booking.save
+        BookingMailer.creation_confirmation(@booking).deliver_now
+        redirect_to flat_booking_path(@booking.flat_id, @booking)
+      else
+        render :new
+      end
     end
 
     private
