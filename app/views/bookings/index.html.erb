@@ -1,0 +1,8 @@
+<h3> All your bookings</h3>
+
+<% @bookings.each do |booking| %>
+  <%= booking.created_at %>
+  <%= booking.flat_id %>
+  <p> New Row</p>
+  <p> -------- </p>
+<% end %>
