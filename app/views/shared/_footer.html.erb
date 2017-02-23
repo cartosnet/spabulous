@@ -2,20 +2,16 @@
 
       <div class="footer-left">
 
-        <h3>Spa<span>Bulous</span></h3>
+        <h3>SPA<span>Bulous</span></h3>
 
         <p class="footer-links">
-          <a href="#">Home</a>
+          <%= link_to "home", controller: "pages", action: "home" %>
           ·
-          <a href="#">Blog</a>
+          <%= link_to "about", controller: "pages", action: "about" %>
           ·
-          <a href="#">Pricing</a>
+          <%= link_to "info", controller: "pages", action: "info" %>
           ·
-          <a href="#">About</a>
-          ·
-          <a href="#">Faq</a>
-          ·
-          <a href="#">Contact</a>
+          <%= link_to "contact", controller: "pages", action: "contact" %>
         </p>
 
         <p class="footer-company-name">Spabulous &copy; 2017</p>
@@ -35,7 +31,7 @@
 
         <div>
           <i class="fa fa-envelope"></i>
-          <p><a href="mailto:support@company.com">smile@fabulous.com</a></p>
+          <p><a href="mailto:support@company.com">smile@spabulous.com</a></p>
         </div>
 
       </div>
@@ -49,10 +45,10 @@
 
         <div class="footer-icons">
 
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-github"></i></a>
+          <a href="https://www.facebook.com/lewagon/"><i class="fa fa-facebook"></i></a>
+          <a href="https://twitter.com/lewagonparis?lang=fr"><i class="fa fa-twitter"></i></a>
+          <a href="https://fr.linkedin.com/edu/school?id=198003"><i class="fa fa-linkedin"></i></a>
+          <a href="https://github.com/lewagon"><i class="fa fa-github"></i></a>
 
         </div>
 
