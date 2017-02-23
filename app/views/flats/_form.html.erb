@@ -1,5 +1,6 @@
 <%= simple_form_for([@user, @flat]) do |f| %>
   <%= f.input :name, label: "Choisissez un titre"  %>
+  <%= f.input :address, label: "Rentrez votre adress"  %>
   <%= f.input :description, label: "Décrivez votre appartement" %>
   <%= f.input :photos, as: :attachinary %>
   <%= f.input :photos, as: :attachinary %>

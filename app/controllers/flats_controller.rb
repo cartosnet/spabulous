@@ -2,11 +2,18 @@ class FlatsController < ApplicationController
  skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      @flats = Flat.all
+      @flats = Flat.near(params[:address], 10)
+      @flats = Flat.where.not(latitude: nil, longitude: nil)
+      @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
+        marker.lat flat.latitude
+        marker.lng flat.longitude
+        # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      end
     end
 
     def show
       @flat = Flat.find(params[:id])
+      @flat_coordinates = { lat: @flat.latitude, lng: @flat.longitude }
     end
 
     def new
@@ -16,7 +23,7 @@ class FlatsController < ApplicationController
     def create
       @flat = Flat.new(flat_params)
       if @flat.save
-        redirect_to flat_path(@flat)
+        redirect_to flat_path(@flat), notice: 'Flat was successfully created.'
       else
         render :new
       end
@@ -29,13 +36,13 @@ class FlatsController < ApplicationController
     def update
       @flat = Flat.find(params[:id])
       if @flat.update(flat_params)
-        redirect_to flat_path(@flat)
+        redirect_to flat_path(@flat), notice: 'Flat was successfully created.'
       else
        render :edit
       end
     end
 
-    def delete
+    def destroy
       @flat = Flat.find(params[:id])
       @flat.destroy
       redirect_to flats_path
@@ -47,7 +54,7 @@ class FlatsController < ApplicationController
 
       params
       .require(:flat)
-      .permit(:name, :description, :price_day, :price_night, :petals, :massage_kit, :champagne, :instructions, photos: [])
+      .permit(:name, :address,:description, :price_day, :price_night, :petals, :massage_kit, :champagne, :instructions, photos: [])
     end
 
   end

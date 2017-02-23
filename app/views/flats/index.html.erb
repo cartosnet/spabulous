@@ -1,33 +1,44 @@
-
-<div class="banner" style="background-image: url(
-  <%= image_path("background.jpg") %>);">
-  <div class="banner-content">
-    <h1>Tous les couples ont droit à leurs paradis</h1>
-    <p>Louez votre espace détente, de jours comme de nuit </p>
-    <a class="btn btn-primary btn-lg">Réservez maintenant</a>
-  </div>
-</div>
-
-<div class="container text-center">
- <h3>Notre selection pour vos futurs espace détentes</h3>
-  <div class="row">
-    <% @flats.last(6).each do |flat| %>
-      <div class="col-xs-12 col-sm-4">
-        <%= link_to flat_path(flat) do %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= flat.photo_1 %>');">
-            <div class="title">
-              <h3> <%= flat.name %></h3>
+<div class="container-fluid">
+  <div class="background-pink">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <% @flats.each do |flat| %>
+            <div class="col-xs-12 col-sm-4">
+              <%= link_to flat_path(flat) do %>
+                <div class="card-details">
+                  <div class="title">
+                    <h3> <%= flat.name %></h3>
+                  </div>
+                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= flat.photo_1 %>');">
+                    </div>
+                </div>
+              <% end %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    <% end %>
+    <div class="col-sm-6">
+      <div id="map" style="width: 100%; height: 600px;">
+      </div>
+       <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+      </div>
+    </div>
   </div>
-  <hr/>
-
-  <% if user_signed_in? %>
-    <!-- Show button Add a flat -->
-    <%= link_to "Proposer un appartement à la location", new_flat_url, { class: "btn btn-primary"} %>
-  <% end %>
-
 </div>

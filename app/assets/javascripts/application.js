@@ -14,12 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
+
+//= require underscore
+//= require gmaps/google
 
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require_tree .
 
-
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
