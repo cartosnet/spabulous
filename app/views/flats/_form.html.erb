@@ -16,19 +16,14 @@
   <div class="col-xs-1"></div>
   <div class="col-xs-11">
     <h2>
-    <%= f.input :petals, as: :boolean, label: "Pétales de rose" do  %>
-      <%= f.check_box :petals, {}, "yes", "no"  %>
-    <% end %>
+    <%= f.input :petals, label: "Pétales de rose"  %>
     </h2>
     <h2>
-    <%= f.input :champagne, as: :boolean, label: "Champagne" do  %>
-      <%= f.check_box :champagne, {}, "yes", "no"  %>
-    <% end %>
+    <%= f.input :champagne, label: "Champagne"%>
+
     </h2>
     <h2>
-    <%= f.input :massage_kit, as: :boolean, label: "Kit de Massage" do  %>
-      <%= f.check_box :massage_kit, {}, "yes", "no"  %>
-    <% end %>
+    <%= f.input :massage_kit, label: "Kit de Massage"  %>
     </h2>
   </div>
   <h1>
