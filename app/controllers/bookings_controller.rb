@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
       # generate a date_time started_at and ended_at
       @booking.started_at = fulldate
       @booking.save
-      redirect_to flat_booking_path(flat, @booking)
+      redirect_to flat_booking_path(@booking.flat_id, @booking)
     end
 
     private
@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
     def booking_params
       params
       .require(:booking)
-      .permit(:amount, :started_at, :ended_at, :petals, :massage_kit, :champagne, :reservation_date, :time_slot)
+      .permit(:flat_id, :amount, :started_at, :ended_at, :petals, :massage_kit, :champagne, :reservation_date, :time_slot)
     end
 
   end
