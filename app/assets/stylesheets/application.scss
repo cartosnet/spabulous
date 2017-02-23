@@ -24,7 +24,32 @@
 
 @import "components/*";
 
+// COLORS
+
+$color_1 : #af9a1f; // gold
+$color_2 : #af1f5b; // dark pink
+
+
+
+// GENERAL
 
 body{
   text-align: center;
+}
+
+
+
+// LOGO
+
+.logo{
+  font-family: 'Baloo', cursive;
+  color: $color_1;
+}
+.logo:hover{
+  text-decoration: none;
+  color: $color_2;
+}
+.logo h1 b{
+  font-weight: normal;
+  color: $color_2;
 }
