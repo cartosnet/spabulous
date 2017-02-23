@@ -1,15 +1,24 @@
 class BookingsController < ApplicationController
 
+    def index
+      @bookings = current_user.bookings
+      @flats = current_user.flats
+    end
+
     def new
       @current_flat = Flat.find(params[:flat_id])
       @booking= Booking.new(flat_id: @current_flat.id)
     end
 
     def show
+      @flat = Flat.find(params[:flat_id])
+      @booking = Booking.find(params[:id])
     end
 
     def create
       @booking= Booking.new(booking_params)
+      @booking.user = current_user
+      @booking.flat = Flat.find(params[:flat_id])
 
       # get the reservation_date
 
@@ -30,7 +39,7 @@ class BookingsController < ApplicationController
       # generate a date_time started_at and ended_at
       @booking.started_at = fulldate
       @booking.save
-      redirect_to root
+      redirect_to flat_booking_path(flat, @booking)
     end
 
     private

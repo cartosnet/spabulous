@@ -1,6 +1,6 @@
 <%= simple_form_for([@user, @flat]) do |f| %>
-  <%= f.input :name, label: "Choisissez un titre"  %>
-  <%= f.input :address, label: "Rentrez votre adress"  %>
+  <%= f.input :name, label: "Nom de votre appartement"  %>
+  <%= f.input :address, label: "Rentrez votre adresse"  %>
   <%= f.input :description, label: "Décrivez votre appartement" %>
   <%= f.input :photos, as: :attachinary %>
   <%= f.input :photos, as: :attachinary %>
@@ -16,17 +16,17 @@
   <div class="col-xs-1"></div>
   <div class="col-xs-11">
     <h2>
-    <%= f.input :petals, as: :boolean, label: "Pétales de rose......................." do  %>
+    <%= f.input :petals, as: :boolean, label: "Pétales de rose" do  %>
       <%= f.check_box :petals, {}, "yes", "no"  %>
     <% end %>
     </h2>
     <h2>
-    <%= f.input :champagne, as: :boolean, label: "Champagne............................" do  %>
+    <%= f.input :champagne, as: :boolean, label: "Champagne" do  %>
       <%= f.check_box :champagne, {}, "yes", "no"  %>
     <% end %>
     </h2>
     <h2>
-    <%= f.input :massage_kit, as: :boolean, label: "Kit de Massage......................." do  %>
+    <%= f.input :massage_kit, as: :boolean, label: "Kit de Massage" do  %>
       <%= f.check_box :massage_kit, {}, "yes", "no"  %>
     <% end %>
     </h2>
