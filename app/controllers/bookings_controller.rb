@@ -27,19 +27,29 @@ class BookingsController < ApplicationController
       # get the time_slot
 
       if @booking.time_slot == "Jour"
-        time = "T12:00:00+00:00"
-        fulldate = DateTime.parse(date.to_s+time.to_s)
+        # entrance time is 12h, exit time is 17h
+        entrance_time = "T12:00:00+00:00"
+        exit_time = "T17:00:00+00:00"
+        exit_day = date
+
       elsif @booking.time_slot == "Nuit"
-        time = "T19:00:00+00:00"
-        fulldate = DateTime.parse(date.to_s+time.to_s)
+        # entrance time is 19h, exit time is 10h
+        entrance_time = "T19:00:00+00:00"
+        exit_time = "T10:00:00+00:00"
+        exit_day = date.tomorrow
+
       else
         #TODO : Show error message "vous devez choisir entre reserver pour la journée ou la nuit"
       end
 
-      # generate a date_time started_at and ended_at
-      @booking.started_at = fulldate
+      entrance = DateTime.parse(date.to_s + entrance_time.to_s)
+      exit = DateTime.parse(exit_day.to_s + exit_time.to_s)
+
+      @booking.started_at = entrance
+      @booking.ended_at = exit
+
       @booking.save
-      redirect_to flat_booking_path(flat, @booking)
+      redirect_to flat_booking_path(@booking.flat_id, @booking)
     end
 
     private

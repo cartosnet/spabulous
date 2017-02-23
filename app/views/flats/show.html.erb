@@ -9,6 +9,12 @@
 
       <h1><%= @flat.name.upcase %></h1>
 
+      <!-- Edit Button -->
+      <% if @flat.user_id = current_user %>
+        <%= link_to 'Edit', edit_flat_path(@flat) %>
+      <% end %>
+
+
       <h4><%= @flat.description.capitalize %></h4>
 
       <!-- Photos -->
@@ -34,24 +40,24 @@
         <% end %>
       </ul>
 
-      <!-- Call To Action -->
-      <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
-      <% if @flat.user_id = current_user %>
-        <%= link_to 'Edit', edit_flat_path(@flat) %>
+      <!-- Bookings -->
+      <% if @flat.bookings == true %>
+        <h4>THIS FLAT IS FULL :</h4>
+        <ul>
+        <% @flat.bookings.each do |booking| %>
+          <li>FROM <i><%= booking.started_at %></i> TO <i><%= booking.started_at %></i> </li>
+        <% end %>
+        </ul>
+
+      <% else %>
+          <h4>THIS FLAT IS HIGHLY AVAILABLE</h4>
       <% end %>
 
-
+      <!-- Call To Action -->
+      <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
 
     </div>
 
   </div>
 </div>
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var coord = <%= raw @flat_coordinates.to_json %>;
-      alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
-    });
-  <% end %>
-<% end %>
