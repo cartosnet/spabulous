@@ -12,23 +12,26 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-    <%= render 'shared/navbar' %>
+    <div class="wrapper">
+      <!-- Navbar -->
+      <%= render 'shared/navbar' %>
 
-    <!-- Alerts -->
-    <%= render 'shared/flashes' %>
-
-    <!-- Contenu -->
-
-
-          <%= yield %>
+      <!-- Alerts -->
+      <%= render 'shared/flashes' %>
 
 
-      </div>
+
+        <!-- Contenu -->
+
+        <%= yield %>
+
+
+
+      <!-- Footer -->
+      <%= render 'shared/footer' %>
+
+
     </div>
-
-    <!-- Footer -->
-    <%= render 'shared/footer' %>
 
     <!-- JAVASCRIPT -->
 
