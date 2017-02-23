@@ -2,8 +2,10 @@ class FlatsController < ApplicationController
  skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      @flats = Flat.near(params[:address], 10)
-      @flats = Flat.where.not(latitude: nil, longitude: nil)
+      @flats = Flat.near(params[:address], 50)git
+
+      # @flats = @flats.where(number)
+
       @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
         marker.lat flat.latitude
         marker.lng flat.longitude
