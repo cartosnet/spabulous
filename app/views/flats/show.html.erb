@@ -8,14 +8,13 @@
           <%= link_to edit_flat_path(@flat) do %>
             <i class="fa fa-pencil" aria-hidden="true" ></i>
           <% end %>
+          <% else %>
+            <%= link_to 'Réserver', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
         <% end %>
       <% else %>
-<<<<<<< HEAD
+
          <!-- Call To Action -->
       <%= link_to 'Réserver', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
-=======
-          <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
->>>>>>> master
       <% end %>
       </h2>
     </div>
