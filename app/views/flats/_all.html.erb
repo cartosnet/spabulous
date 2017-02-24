@@ -1,27 +1,34 @@
-<% @flats.each do |flat| %>
-  <%= link_to flat_path(flat) do %>
+<div class="container-fluid">
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to flat_path(flat) do %>
 
 
-      <% if flat.photos[0].nil? %>
-        <!-- TODO : Afficher le titre sans background-image -->
-      <% else %>
 
-        <div class="card">
-          <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photos[0].path, width: 900, height: 700, crop: :fill %>');">
-            <div class="card-bottom">
-              <h1><%= flat.name %></h1>
-              <p><%= flat.description %></p>
-              <% if flat.user_id = current_user %>
-                <%= link_to 'Edit', edit_flat_path(flat), class: 'btn btn-primary' %>
-              <% end %>
+          <% if flat.photos[0].nil? %>
+            <!-- TODO : Afficher le titre sans background-image -->
+          <% else %>
+
+            <div class="card">
+              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photos[0].path, width: 900, height: 700, crop: :fill %>');">
+                <div class="card-bottom">
+                  <h1><%= flat.name %></h1>
+                  <p><%= flat.description %></p>
+                  <% if flat.user_id = current_user %>
+                    <%= link_to 'Edit', edit_flat_path(flat), class: 'btn btn-primary' %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-      <% end %>
+          <% end %>
 
 
 
 
+        <% end %>
+      </div>
     <% end %>
-<% end %>
+  </div>
+</div>

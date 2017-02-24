@@ -19,7 +19,7 @@
 
       <!-- Photos -->
       <% @flat.photos.each do |photo| %>
-        <%= cl_image_tag photo.path, width: 500, height: 500, crop: :fit %>
+        <%= cl_image_tag photo.path, width: 500, height: 500, crop: :fit, class: "swipebox"  %>
       <% end %>
 
       <!-- Prices-->
@@ -68,4 +68,5 @@
 
   </div>
 </div>
+
 
