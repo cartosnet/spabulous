@@ -15,7 +15,11 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(){
-        $('.datepicker').datepicker();
-      });
+
+      $('.datepicker').datepicker({
+          todayHighlight: true
+      })
+
+    });
   <% end %>
 <% end %>

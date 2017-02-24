@@ -1,5 +1,4 @@
 <div class="container">
-<link rel="stylesheet" href="src/css/swipebox.css">
   <div class="row">
 
     <div class="col-xs-2"><!--Offset-->  </div>
@@ -9,6 +8,12 @@
 
 
       <h1><%= @flat.name.upcase %></h1>
+
+      <!-- Edit Button -->
+      <% if @flat.user_id = current_user %>
+        <%= link_to 'Edit', edit_flat_path(@flat) %>
+      <% end %>
+
 
       <h4><%= @flat.description.capitalize %></h4>
 
@@ -35,11 +40,27 @@
         <% end %>
       </ul>
 
+      <!-- Bookings -->
+      <% if @flat.bookings.present? %>
+        <h4>THIS FLAT IS FULL :</h4>
+        <ul>
+        <% @flat.bookings.each do |booking| %>
+
+          <% if booking.ended_at >= DateTime.now %>
+            <li>FROM <i><%= booking.started_at %></i> TO <i><%= booking.started_at %></i> </li>
+          <% else %>
+          <% end %>
+
+        <% end %>
+        </ul>
+
+      <% else %>
+          <h4>THIS FLAT IS HIGHLY AVAILABLE</h4>
+      <% end %>
+
       <!-- Call To Action -->
       <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
-      <% if @flat.user_id = current_user %>
-        <%= link_to 'Edit', edit_flat_path(@flat) %>
-      <% end %>
+
 
 
 
@@ -47,21 +68,5 @@
 
   </div>
 </div>
-<script src="lib/jquery-2.0.3.js"></script>
-<script src="src/js/jquery.swipebox.js"></script>
-<script type="text/javascript">
-;( function( $ ) {
 
-  $( '.swipebox' ).swipebox();
 
-} )( jQuery );
-</script>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var coord = <%= raw @flat_coordinates.to_json %>;
-      alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
-    });
-  <% end %>
-<% end %>
