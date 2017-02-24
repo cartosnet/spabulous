@@ -45,7 +45,12 @@
         <h4>THIS FLAT IS FULL :</h4>
         <ul>
         <% @flat.bookings.each do |booking| %>
-          <li>FROM <i><%= booking.started_at %></i> TO <i><%= booking.started_at %></i> </li>
+
+          <% if booking.ended_at >= DateTime.now %>
+            <li>FROM <i><%= booking.started_at %></i> TO <i><%= booking.started_at %></i> </li>
+          <% else %>
+          <% end %>
+
         <% end %>
         </ul>
 
@@ -55,6 +60,9 @@
 
       <!-- Call To Action -->
       <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
+
+
+
 
     </div>
 
