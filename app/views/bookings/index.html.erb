@@ -4,7 +4,7 @@
 <h3> All your bookings</h3>
 
 <% @bookings.each do |booking| %>
-  <p> You have a booking for the: <%= booking.started_at %></p>
+  <p> You have a booking for the: <%= booking.started_at.strftime('%F   %H:%M h') %></p>
   <p> <%= link_to "Details of the booking", flat_booking_path(booking.flat, booking) %></p>
   <p> -------- </p>
 <% end %>
