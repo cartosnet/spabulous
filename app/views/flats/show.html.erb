@@ -41,7 +41,7 @@
       </ul>
 
       <!-- Bookings -->
-      <% if @flat.bookings == true %>
+      <% if @flat.bookings.present? %>
         <h4>THIS FLAT IS FULL :</h4>
         <ul>
         <% @flat.bookings.each do |booking| %>
