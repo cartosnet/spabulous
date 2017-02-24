@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   has_many :flats, dependent: :destroy
   has_many :bookings
+  after_create :send_welcome_email
+  after_create :subscribe_to_newsletter
+
+
   # TODO validations :
   ## name must be presence true
   ## email must be unique
@@ -30,5 +34,15 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  private
+
+  def subscribe_to_newsletter
+    SubscribeToNewsletterService.new(self).call
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end

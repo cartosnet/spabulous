@@ -42,14 +42,23 @@ class BookingsController < ApplicationController
         #TODO : Show error message "vous devez choisir entre reserver pour la journée ou la nuit"
       end
 
+
+      # generate a date_time started_at and ended_at
+
       entrance = DateTime.parse(date.to_s + entrance_time.to_s)
       exit = DateTime.parse(exit_day.to_s + exit_time.to_s)
 
       @booking.started_at = entrance
       @booking.ended_at = exit
 
-      @booking.save
-      redirect_to flat_booking_path(@booking.flat_id, @booking)
+
+      if @booking.save
+        BookingMailer.creation_confirmation(@booking).deliver_now
+        redirect_to flat_booking_path(@booking.flat_id, @booking)
+      else
+        render :new
+      end
+
     end
 
     private
@@ -57,7 +66,7 @@ class BookingsController < ApplicationController
     def booking_params
       params
       .require(:booking)
-      .permit(:amount, :started_at, :ended_at, :petals, :massage_kit, :champagne, :reservation_date, :time_slot)
+      .permit(:flat_id, :amount, :started_at, :ended_at, :petals, :massage_kit, :champagne, :reservation_date, :time_slot)
     end
 
   end
