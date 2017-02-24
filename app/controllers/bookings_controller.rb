@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
 
       # get the reservation_date
 
-      date = Date.parse(@booking.reservation_date)
+      date = Date.strptime(@booking.reservation_date, '%m/%d/%Y')
 
       # get the time_slot
 
