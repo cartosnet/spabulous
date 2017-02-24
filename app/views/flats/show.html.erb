@@ -1,4 +1,5 @@
 <div class="container">
+<link rel="stylesheet" href="src/css/swipebox.css">
   <div class="row">
 
     <div class="col-xs-2"><!--Offset-->  </div>
@@ -13,7 +14,7 @@
 
       <!-- Photos -->
       <% @flat.photos.each do |photo| %>
-        <%= cl_image_tag photo.path, width: 500, height: 500, crop: :fit %>
+        <%= cl_image_tag photo.path, width: 500, height: 500, crop: :fit, class: "swipebox"  %>
       <% end %>
 
       <!-- Prices-->
@@ -46,6 +47,15 @@
 
   </div>
 </div>
+<script src="lib/jquery-2.0.3.js"></script>
+<script src="src/js/jquery.swipebox.js"></script>
+<script type="text/javascript">
+;( function( $ ) {
+
+  $( '.swipebox' ).swipebox();
+
+} )( jQuery );
+</script>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
