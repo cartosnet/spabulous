@@ -1,11 +1,7 @@
-<br>
-<br>
-<br>
-<br>
 <h2> Here's your booking</h2>
 
 <p> You have ordered it at the: <%= @booking.created_at %></p>
-<p>It it is booked for the: <%= @booking.started_at %></p>
+<p>It it is booked for the: <%= @booking.started_at.strftime('%F   %H:%M h') %></p>
 <p> <%= @booking.flat.name %> </p>
 <p> <%= @booking.flat.address %></p>
 
