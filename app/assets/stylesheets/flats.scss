@@ -22,3 +22,33 @@
 .blue{
   color: blue;
 }
+
+.appartment h2 a {
+ color: #ccc;
+ text-decoration: none;
+
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+
+
+.available-flat {
+  color: red;
+  margin: 40px;
+
+}
+
+.appartment {
+  margin: 40px;
+  color: rgb(187, 121, 234);
+}
+
+.appartment h2 a:hover {
+ color: rgb(187, 121, 234);
+ text-decoration: none;
+
+}
