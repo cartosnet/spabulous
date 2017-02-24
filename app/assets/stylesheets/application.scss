@@ -5,6 +5,8 @@
 @import "bootstrap-datepicker3";
 @import "variables";
 
+@import url('https://fonts.googleapis.com/css?family=Baloo|Lato');
+
 @import "components/*";
 
 @import "flats";
@@ -15,22 +17,53 @@
 
 body{
   text-align: center;
+  font-family: 'Lato', sans-serif;
 }
+
+a, p, h2, h3, h4, h5{
+  color: $text_color;
+}
+a:hover, h2:hover, p:hover{
+  color: black;
+  text-decoration: none !important;
+  transition: color 0.5s ease;
+}
+
 .wrapper{
   padding-top: 100px;
 }
-
 // LOGO
 
-.logo{
-  font-family: 'Baloo', cursive;
+a.logo{
+  font-family: 'Baloo', cursive !important;
   color: $color_1;
 }
-.logo:hover{
+a.logo:hover{
   text-decoration: none;
   color: $color_2;
+  transition: background-color 0.5s ease;
 }
-.logo h1 b{
+a.logo h1 b{
   font-weight: normal;
   color: $color_2;
+}
+
+
+// BUTTONS
+
+.btn{
+  background-color: $color_1;
+  border-color: $color_1;
+}
+.btn:hover{
+  background-color: $color_2;
+  border-color: $color_2;
+  transition: background-color 0.2s ease;
+}
+
+
+// CARD
+
+.card-img{
+  min-height: 500px;
 }
