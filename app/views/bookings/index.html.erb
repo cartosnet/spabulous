@@ -1,13 +1,17 @@
-<br>
-<br>
-<br>
-<h3> All your bookings</h3>
-
-<% @bookings.each do |booking| %>
-  <p> You have a booking for the: <%= booking.started_at %></p>
-  <p> <%= link_to "Details of the booking", flat_booking_path(booking.flat, booking) %></p>
-  <p> -------- </p>
-<% end %>
-<h3>your flats</h3>
-<%= render 'flats/all' %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>Vos réservations</h3>
+      <% @bookings.each do |booking| %>
+        <p> Vous avez une réservation pour le :
+        <%= booking.started_at.to_datetime.class %></p>
+        <p> <%= link_to "Details", flat_booking_path(booking.flat, booking), class: "btn" %></p>
+        <hr/>
+      <% end %>
+    </div>
+    <div class="col-xs-6">
+      <h3>your flats</h3>
+      <%= render 'flats/all' %>
+    </div>
+  </div>
+</div>

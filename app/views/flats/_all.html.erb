@@ -3,15 +3,15 @@
     <% @flats.each do |flat| %>
       <div class="col-xs-12 col-sm-4">
         <%= link_to flat_path(flat) do %>
-
+          <div class="card">
 
 
           <% if flat.photos[0].nil? %>
             <!-- TODO : Afficher le titre sans background-image -->
           <% else %>
 
-            <div class="card">
-              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photos[0].path, width: 900, height: 700, crop: :fill %>');">
+
+              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photos[0].path, width: 600, height: 400, crop: :scale %>');">
                 <div class="card-bottom">
                   <h1><%= flat.name %></h1>
                   <p><%= flat.description %></p>
@@ -20,11 +20,11 @@
                   <% end %>
                 </div>
               </div>
-            </div>
+
 
           <% end %>
 
-
+          </div>
 
 
         <% end %>
