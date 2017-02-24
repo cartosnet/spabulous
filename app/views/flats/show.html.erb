@@ -3,13 +3,14 @@
       <h2 ><%= @flat.name.upcase %>
 
       <!-- Edit Button -->
-      <% if @flat.user_id == current_user.id %>
-        <%= link_to edit_flat_path(@flat) do %>
-          <i class="fa fa-pencil" aria-hidden="true" ></i>
+      <% if user_signed_in?  %>
+        <% if  @flat.user_id == current_user.id %>
+          <%= link_to edit_flat_path(@flat) do %>
+            <i class="fa fa-pencil" aria-hidden="true" ></i>
+          <% end %>
         <% end %>
       <% else %>
-         <!-- Call To Action -->
-      <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
+          <%= link_to 'Réserver cet appartement', new_flat_booking_path(@flat), class: 'btn btn-primary' %>
       <% end %>
       </h2>
     </div>

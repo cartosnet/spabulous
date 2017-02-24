@@ -19,8 +19,10 @@
                 <% end %>
                 <div class="flat-description">
                   <p> text</p>
-                  <% if flat.user_id == current_user.id %>
-                    <%= link_to 'Edit', edit_flat_path(flat) %>
+                  <% if user_signed_in?  %>
+                    <% if flat.user_id == current_user.id %>
+                      <%= link_to 'Edit', edit_flat_path(flat) %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
